@@ -1,0 +1,12 @@
+# Whitelist: nur Website-Quellen, Build-Tools und Build-Ausgabe werden veröffentlicht.
+# Alles andere (Briefing, Konzepte, CLAUDE.md, Referenzen, Vor-Ort-Fotos, Workflows, Screenshots) bleibt privat.
+*
+!.gitignore
+!README.md
+!src/
+!src/**
+!tools/
+!tools/**
+!dist/
+!dist/**
+.DS_Store

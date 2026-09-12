@@ -1,0 +1,23 @@
+/* Datenschutz – Rechtstext im Zweispalter, engere Sektionsabstände als auf Inhaltsseiten. */
+.ds-facts strong { font-family: var(--mono); font-weight: 600; letter-spacing: -.01em; }
+
+.ds-toc { border-block-end: var(--hairline) solid var(--kalk-3); padding-block: 1rem; }
+.ds-toc ol { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; counter-reset: toc; color: var(--ink-2); }
+.ds-toc li { display: flex; gap: .5rem; align-items: baseline; }
+.ds-toc li::before { counter-increment: toc; content: counter(toc, decimal-leading-zero); color: var(--terra-ink); font-weight: 700; }
+.ds-toc a { text-decoration: none; padding-block: .3em; }
+.ds-toc a:hover { color: var(--terra-ink); }
+
+.ds-sec { padding-block: clamp(2.5rem, 5vw, 4.5rem); border-block-end: var(--hairline) solid var(--kalk-3); }
+.ds-sec.ds-stand { border-block-end: 0; }
+.ds-sec .split-a h2 { font-size: var(--t-2); max-inline-size: 24ch; }
+.ds-sec .split-a .sec-head p { margin-block-start: 1rem; }
+.ds-sec .prose h3 { font-size: var(--t-1); }
+.ds-after { margin-block-start: clamp(1.75rem, 3vw, 2.5rem); }
+.prose .hinweis { margin-block-start: 1.5rem; }
+.ds-rights h3 { hyphens: auto; }
+.ds-rights .code { white-space: nowrap; }
+.tafel .ds-meta { margin-block-start: 1rem; }
+.tafel > p + .ds-meta { margin-block-start: 1rem; }
+.ds-meta dd { overflow-wrap: anywhere; }
+@media (max-width: 419px) { .ds-meta, .ds-sec .meta { grid-template-columns: 1fr; row-gap: .2rem; } .ds-meta dd + dt, .ds-sec .meta dd + dt { margin-block-start: .6rem; } }

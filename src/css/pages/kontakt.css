@@ -1,0 +1,25 @@
+/* Kontakt: Kontaktdaten in der Tafel, Themenliste mit vorbereitetem Betreff. */
+
+/* Definitionsliste in der Tafel (Basis: .tafel .defs in style.css), schmalere Label-Spalte. */
+.contact-defs .mail { font-weight: 600; overflow-wrap: anywhere; }
+@media (min-width: 600px) { .contact-defs > div { grid-template-columns: 7rem 1fr; } }
+
+/* Themenliste: jede Zeile ein Link mit Nummer, Titel, Erklärung, Pfeil. */
+.topics { border-block-start: var(--rule) solid var(--ink); max-inline-size: 60rem; }
+.topics li { border-block-end: var(--hairline) solid var(--kalk-3); }
+.topics a {
+  display: grid; grid-template-columns: 3.5rem 1fr auto; gap: 1rem; align-items: baseline;
+  padding-block: 1.1rem; text-decoration: none; transition: background-color .2s, color .2s;
+}
+.topics .num { color: var(--ink-2); }
+.topics .body { display: grid; gap: .3rem; }
+.topics h3 { font-size: var(--t-1); line-height: 1.2; }
+.topics p { color: var(--ink-2); font-size: var(--t--1); max-inline-size: 48ch; }
+.topics svg { inline-size: 1.25rem; block-size: 1.25rem; align-self: center; color: var(--terra-ink); transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+.topics a:hover h3 { color: var(--terra-ink); }
+.topics a:hover svg { transform: translateX(.25em); }
+.topics a:focus-visible { outline-offset: -3px; }
+@media (max-width: 599px) {
+  .topics a { grid-template-columns: 1fr auto; }
+  .topics .num { grid-column: 1 / -1; }
+}

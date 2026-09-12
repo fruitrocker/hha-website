@@ -1,0 +1,33 @@
+/* Transparenz – seitenspezifisch. Nutzt .defs, .tafel, .trust/.stamp, .room-list, .log, .faq-list aus style.css. */
+
+/* Vereinsakte: Definitionsliste im Tafelrahmen (Basis: .tafel .defs in style.css), Label-Spalte im Tablet-Bereich */
+@media (min-width: 600px) and (max-width: 1099px) { .akte > div { grid-template-columns: 11rem 1fr; } }
+
+/* Gemeinnützigkeit: Zwecke-Tabelle im dunklen Panel, breite Zelle über zwei Spalten */
+.gem-grid .zwecke-stamp { grid-column: 1 / -1; }
+@media (min-width: 1100px) { .gem-grid { grid-template-columns: 1fr 1fr 2fr; } .gem-grid .zwecke-stamp { grid-column: auto; } }
+.zwecke { inline-size: 100%; border-collapse: collapse; font-size: var(--t--1); }
+.zwecke th, .zwecke td { text-align: start; vertical-align: top; padding-block: .6rem; padding-inline-end: 1rem; border-block-end: var(--hairline) solid color-mix(in oklab, var(--on-panel) 25%, transparent); }
+.zwecke thead th { font-family: var(--mono); font-size: var(--t-mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: color-mix(in oklab, var(--on-panel) 70%, transparent); padding-block-start: 0; }
+.zwecke tbody th { font-weight: 500; color: var(--on-panel); }
+.zwecke td { font-family: var(--mono); font-size: var(--t-mono); white-space: nowrap; color: var(--holz); padding-inline-end: 0; }
+.zwecke tbody tr:last-child > * { border-block-end: 0; }
+/* Schmal: Zweck und Paragraf untereinander, Kopfzeile nur für Screenreader */
+@media (max-width: 599px) {
+  .zwecke thead { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
+  .zwecke tbody tr, .zwecke tbody th, .zwecke td { display: block; }
+  .zwecke tbody th { padding-block-end: .15rem; border: 0; }
+  .zwecke td { padding-block-start: 0; }
+  .zwecke tbody tr { border-block-end: var(--hairline) solid color-mix(in oklab, var(--on-panel) 25%, transparent); }
+  .zwecke tbody tr:last-child { border-block-end: 0; }
+}
+
+/* Satzungszitat unter den Stempeln */
+.satzung-zitat { margin-block-start: clamp(2rem, 4vw, 3rem); border-inline-start: var(--rule) solid var(--holz); padding-inline-start: 1.25rem; display: grid; gap: .75rem; max-inline-size: 60rem; }
+.satzung-zitat .mono { color: var(--holz); }
+.satzung-zitat .lead { max-inline-size: 56ch; }
+.satzung-zitat .muted { color: color-mix(in oklab, var(--on-panel) 75%, transparent); font-size: var(--t--1); }
+
+/* Dokumente: Status-Spalte etwas breiter für „Öffentlich“ */
+.docs li { grid-template-columns: 1.25rem 7rem 1fr; }
+@media (max-width: 419px) { .docs li { grid-template-columns: 1.25rem 1fr; } }

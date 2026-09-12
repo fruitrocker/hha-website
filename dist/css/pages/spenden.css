@@ -1,0 +1,5 @@
+/* Spenden – seitenspezifisch. Nur Ergänzungen, keine Überschreibungen des Systems. */
+.geben-label { color: var(--terra-ink); margin-block-end: .75rem; }
+.room-list + .geben-label { margin-block-start: 2.5rem; }
+.defs + .hinweis { margin-block-start: 2rem; }
+@media (min-width: 600px) { .defs > div { grid-template-columns: 13rem 1fr; } }

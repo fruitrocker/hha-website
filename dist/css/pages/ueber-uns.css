@@ -1,0 +1,61 @@
+/* Seite „Über uns“: Namens-Tafel, Grundsätze, Organigramm. Alles andere kommt aus style.css. */
+
+/* ---------- Namens-Tafel (Dari als typografisches Element) --------------- */
+.name-tafel { display: grid; gap: .5rem; }
+.name-tafel .name-de { font-weight: 560; font-size: var(--t-1); letter-spacing: -.012em; line-height: 1.2; }
+.name-tafel .name-dari { margin-block-start: 1rem; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem); line-height: 1.6; }
+.name-tafel .dari-cap { margin-block-start: 0; }
+.name-tafel .name-sub { margin-block-start: 1.25rem; padding-block-start: 1rem; border-block-start: var(--hairline) solid var(--kalk-3); font-size: var(--t--1); }
+
+/* ---------- Grundsätze --------------------------------------------------- */
+.werte { display: grid; grid-template-columns: 1fr; gap: var(--gutter); row-gap: clamp(2rem, 4vw, 3rem); }
+@media (min-width: 600px)  { .werte { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .werte { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.werte li { display: grid; gap: .6rem; align-content: start; border-block-start: var(--rule) solid var(--ink); padding-block-start: 1rem; }
+.werte .mono { color: var(--terra-ink); }
+.werte h3 { font-size: var(--t-1); line-height: 1.15; hyphens: auto; }
+.werte p { color: var(--ink-2); font-size: var(--t--1); }
+
+/* ---------- Vorstand (ohne 12er-Raster drumherum) ------------------------ */
+.board-page { margin-block-start: 0; }
+
+/* ---------- Organigramm (verschachtelte Liste, Linien per CSS) ----------- */
+.org { max-inline-size: 60rem; margin-inline: auto; }
+.org-tree, .org-tree ul { display: grid; justify-items: center; }
+.org-tree li { display: grid; justify-items: center; inline-size: 100%; }
+/* senkrechte Verbindung zwischen zwei Ebenen */
+.org-tree li > ul::before { content: ""; inline-size: var(--rule); block-size: 2rem; background: var(--line); }
+.org-node {
+  inline-size: min(100%, 22rem); display: grid; gap: .25rem; text-align: center;
+  border: var(--rule) solid var(--ink); border-radius: var(--radius); background: var(--kalk); padding: 1rem 1.25rem;
+}
+.org-node .mono { color: var(--ink-2); }
+.org-node strong { font-size: var(--t-1); font-weight: 560; letter-spacing: -.012em; line-height: 1.15; text-wrap: balance; }
+.org-node small { color: var(--ink-2); font-size: var(--t--1); }
+.org-top { background: var(--panel); color: var(--on-panel); border-color: color-mix(in oklab, var(--on-panel) 35%, var(--panel)); }
+.org-top .mono, .org-top small { color: color-mix(in oklab, var(--on-panel) 72%, transparent); }
+.org-leaf { border-block-start: 3px solid var(--terra); inline-size: 100%; }
+.org-leaf .mono { color: var(--terra-ink); }
+
+/* Fachbereiche: drei Spalten mit Kammlinie darüber */
+.org-fach { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); inline-size: 100%; position: relative; padding-block-start: 2rem; }
+.org-fach::before { position: absolute; inset-block-start: 0; inset-inline-start: 50%; transform: translateX(-50%); }
+.org-fach li { position: relative; padding-block-start: 1.5rem; }
+.org-fach li::before { content: ""; position: absolute; inset-block-start: 0; inset-inline-start: 50%; inline-size: var(--rule); block-size: 1.5rem; background: var(--line); transform: translateX(-50%); }
+.org-fach li::after  { content: ""; position: absolute; inset-block-start: 0; inset-inline: calc(-.5 * var(--gutter)); block-size: var(--rule); background: var(--line); }
+.org-fach li:first-child::after { inset-inline-start: 50%; }
+.org-fach li:last-child::after  { inset-inline-end: 50%; }
+.org figcaption { margin-block-start: 1.25rem; }
+
+/* Schmal: Fachbereiche untereinander an einer linken Ader */
+@media (max-width: 599px) {
+  .org-fach { grid-template-columns: 1fr; row-gap: .75rem; padding-block-start: .75rem; padding-inline-start: 1.5rem; justify-items: stretch; }
+  .org-fach::before { display: none; }
+  .org-fach li { padding-block-start: 0; }
+  /* waagerechter Stich zum Kasten */
+  .org-fach li::before { inset-block-start: 50%; inset-inline-start: -1.5rem; inline-size: 1.5rem; block-size: var(--rule); transform: none; }
+  /* senkrechte Ader links, je Eintrag ein Stück (letzter endet auf halber Höhe) */
+  .org-fach li::after, .org-fach li:first-child::after, .org-fach li:last-child::after { inset-inline: -1.5rem auto; inset-block-start: -.75rem; inline-size: var(--rule); block-size: calc(100% + .75rem); }
+  .org-fach li:last-child::after { block-size: calc(50% + .75rem); }
+  .org-node { text-align: start; }
+}
