@@ -1,0 +1,13 @@
+/* Unser Projekt – seitenspezifische Ergänzungen (Komponenten aus style.css) */
+
+/* Zeichnung in der klebenden Kopfspalte des Raumprogramms */
+.plan-fig { margin-block-start: clamp(1.5rem, 3vw, 2.5rem); }
+
+/* Werdegang mit fünf Schritten (Basis: vier Spalten) */
+@media (min-width: 900px) { .path-5 { grid-template-columns: repeat(5, 1fr); } }
+
+/* Stand der Dinge: Meilensteine 7/12, Aktuelles 5/12 */
+.stand-grid { display: grid; grid-template-columns: 1fr; gap: var(--gutter); row-gap: clamp(2rem, 4vw, 3rem); align-items: start; }
+@media (min-width: 900px) {
+  .stand-grid { grid-template-columns: 7fr 5fr; }
+}
