@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://helfende-hand-afg.de/sitemap.xml
+Disallow: /
